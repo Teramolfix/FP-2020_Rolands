@@ -1,0 +1,106 @@
+1.........1.........1.........1.........1
+.2.......2.2.......2.2.......2.2.......2.
+..3.....3...3.....3...3.....3...3.....3..
+...4...4.....4...4.....4...4.....4...4...
+....5.5.......5.5.......5.5.......5.5....
+.....6.........6.........6.........6
+
+41 letters, key = 6
+41/6 = 6 + 5
+
+0 5 8 8 8 8 34 33 33 41 33 36 6 8 8 8 7 35 33 33 41 33 35 7 8 8 8 6 36 33 33 33
+
+5 8 8 8 8 34 33 33 41 33 36
+6 8 8 8 7 35 33 33 41 33 35
+7 8 8 8 6 36 33 33 41 33 34
+
+a.........k
+.b.......j.l
+..c.....i...m
+...d...h
+....e.g
+.....f
+
+
+W . . . E . . . C . . . R . . . L . . . T . . . E
+. E . R . D . S . O . E . E . F . E . A . O . C .
+. . A . . . I . . . V . . . D . . . E . . . N . .
+
+25 letters, key = 3
+25/3 = 6 + 1
+top 7 = round(25/3) + (((25/3) - round(25/3)) * 3)
+mid 12
+bot 6
+
+0 7  12 14 18 8  11 15 17  9  10 16 16 10
+0 7  5  2  4 -10 3  4  2  -8  1  6  0 -6
+
+0 7  19 33 51 59 70 85 102 111
+0 7  19 8  1  9  20 10 2   11
+
+7  12 14 18
+8  11 15 17
+9  10 16 16
+10 9  17 15
+
+1.....1.....1
+.2...2.2...2
+..3.3...3.3
+...4.....4
+
+13 letters, key = 4
+13/4 = 3 + 1
+
+top 3
+mid 4
+mid 4
+bot 2
+
+0 3 4 4 10 9 10 4 4 3 11 9 9
+
+3 4 4 10 9 10
+4 4 3 11 9 9
+5 4 2 12 9 8
+6 4 1 13 9 7
+
+1.....1.....1.....1
+.2...2.2...2.2...2
+..3.3...3.3...3.3
+...4.....4.....4
+
+19 letters, key = 4
+19/4 = 6 + 1
+top 4
+mid 6
+mid 6
+bot 3
+
+0 4 6 6 14 13 15 5 6 5 15 13 14 6
+
+4 6 6 14 13 15
+5 6 5 15 13 14
+6 6 4 16 13 13
+7 6 3 17 13 12
+
+so the 1st number is always the amount of letters in the top layer
+then for as many as there are mid layers there are columns with value of mid layer
+then the next one is the bot layer column, but its value is all mid layers + 2
+then is a static column value of mid layer sum + 1
+then the last one is value of mid layer sum + bot layer
+
+all mid layers, except the last layer, are static
+
+and the last bit of logic is that the column numbers change by value of 1 up or down interleaved, always starting from the first column incrementing and skipping this logic for any static column.
+
+The column numbers represent the amount of letters to jump forward to get the next letter in the decrypted message. 
+
+You can accumulate the values of all numbers before it to get the absolute index of the letter in the encrypted message. The accumulated values will quickly overflow the array bounds, so a period remover function is applied to every accumulated number.
+
+
+7.0 12.0 14.0 18.0 
+8.0 11.0 15.0 17.0 
+9.0 10.0 16.0 16.0 
+10.0 9.0 17.0 15.0 
+11.0 8.0 18.0 14.0 
+12.0 7.0 19.0 13.0 
+13.0 6.0 20.0 12.0
